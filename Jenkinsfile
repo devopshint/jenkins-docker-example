@@ -36,14 +36,23 @@ stage("build & SonarQube analysis") {
                     sh 'echo hello' 
                 }
         }
-        
-    // stage('Building our image') { 
-           // steps { 
-               // script {
-                  //  sh 'docker build -f Dockerfile -t my-app .'
-                    //dockerImage = docker.build registry + ":$BUILD_NUMBER" 
-              //  }
-          //  } 
-      //  }
+    stage('Build Docker Image') {
+            steps {
+                script {
+                  sh 'docker build -t akash64574/my-app-1.0 .'
+                }
+            }
+        }
+            stage('Push Docker Image') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                         sh 'docker login -u akash64574 -p ${dockerhubpwd}'
+    }
+                sh 'docker push akash64574/my-app-1.0'
+                }
+            }
+        }    
+    
     }
 }
