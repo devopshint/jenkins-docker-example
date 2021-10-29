@@ -20,24 +20,11 @@
 
   <dependencies>
     <dependency>
-
-      
-       
-       <groupId>junit</groupId>
-       <artifactId>junit</artifactId>
-       <version>4.11</version>
-       <scope>test</scope>
-    </dependency>
-  
-
-
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-
-
   </dependencies>
 
   <build>
@@ -60,7 +47,6 @@
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
-          
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
