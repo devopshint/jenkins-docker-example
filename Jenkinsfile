@@ -38,7 +38,7 @@ stage("build & SonarQube analysis") {
                     sh 'echo hello' 
                 }
         }
-       stage ('Notify'){     
+       stage ('Notify Dev'){     
         steps {
             slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'jenkins_dev', message: 'Build and Testing completed  Deployment is under process , please wait for further notification ', teamDomain: '$WORKSPACE', tokenCredentialId: 'slack', username: 'Akash'
                  }
@@ -50,7 +50,7 @@ stage("build & SonarQube analysis") {
                 }
             }
         }
-         stage ('Notify'){     
+         stage ('Notify qa'){     
         steps {
             slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'jenkins_qa', message: 'Build and Testing completed and status is good , Deployment is pending for approval', teamDomain: '$WORKSPACE', tokenCredentialId: 'slackqa', username: 'Akash'
                  }
