@@ -38,6 +38,11 @@ stage("build & SonarQube analysis") {
                     sh 'echo hello' 
                 }
         }
+       stage ('Notify'){     
+        steps {
+            slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'jenkins_dev', message: 'Build and Testing completed  Deployment is under process , please wait for further notification ', teamDomain: '$WORKSPACE', tokenCredentialId: 'slack', username: 'Akash'
+                 }
+    }
     stage('Build Docker Image') {
             steps {
                 script {
@@ -45,6 +50,35 @@ stage("build & SonarQube analysis") {
                 }
             }
         }
+         stage ('Notify'){     
+        steps {
+            slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'jenkins_qa', message: 'Build and Testing completed and status is good , Deployment is pending for approval', teamDomain: '$WORKSPACE', tokenCredentialId: 'slackqa', username: 'Akash'
+                 }
+    }
+         stage( 'Appoval mail for QA' ){
+            steps{
+                slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'jenkins_qa', message: "${env.BUILD_URL}", teamDomain: '', tokenCredentialId: 'slackqa'
+        }
+}
+            
+        stage("QA Approval") {
+                  steps {
+     
+script {
+def userInput = input(id: 'Proceed1', message: 'Promote build?', parameters: [[$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you agree with this']])
+echo 'userInput: ' + userInput
+ 
+            if(userInput == true) {
+                // do action
+            } else {
+                // not do action
+                echo "Action was aborted."
+            }
+ 
+        }  
+        
+      }
+ }
             stage('Push Docker Image') {
             steps {
                 script {
@@ -54,7 +88,8 @@ stage("build & SonarQube analysis") {
                 sh 'docker push akash64574/my-app-1.0'
                 }
             }
-        }    
+        } 
+       
     
     }
 }
