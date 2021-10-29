@@ -20,28 +20,23 @@
 
   <dependencies>
     <dependency>
-      
        <groupId>org.seleniumhq.selenium</groupId>
        <artifactId>selenium-java</artifactId>
        <version>4.0.0</version>
-       //<groupId>junit</groupId>
-      //<artifactId>junit</artifactId>
-      //<version>4.11</version>
-      //<scope>test</scope>
     </dependency>
     <dependency>
-  <groupId>org.testng</groupId>
-    <artifactId>testng</artifactId>
-    <version>6.8</version>
-    <scope>test</scope>
-</dependency>
+       <groupId>org.testng</groupId>
+       <artifactId>testng</artifactId>
+       <version>6.8</version>
+       <scope>test</scope>
+    </dependency>
     <dependency>
-    <groupId>io.github.bonigarcia</groupId>
-    <artifactId>webdrivermanager</artifactId>
-    <version>5.0.3</version>
-</dependency>
+       <groupId>io.github.bonigarcia</groupId>
+       <artifactId>webdrivermanager</artifactId>
+       <version>5.0.3</version>
+    </dependency>
 
-</dependencies>
+  </dependencies>
 
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
