@@ -1,0 +1,7 @@
+<suite name="Testing">
+<test name="Selenium QA testing">
+<classes>
+ <class name="com.mycompany.app.AppTest"></class>
+</classes>
+</test>
+</suite>
