@@ -92,9 +92,9 @@ echo 'userInput: ' + userInput
                 }
             }
         } 
-         stage ('Notify Dev again'){     
-        steps {
-            slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'jenkins_dev', message: 'your deployment is completed !!', teamDomain: '$WORKSPACE', tokenCredentialId: 'slack', username: 'Akash'
+                stage ('Notify Dev again'){     
+                   steps {
+                      slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'jenkins_dev', message: 'your deployment is completed !!', teamDomain: '$WORKSPACE', tokenCredentialId: 'slack', username: 'Akash'
                  }
     }
        
