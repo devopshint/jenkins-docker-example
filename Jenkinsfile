@@ -103,7 +103,7 @@ echo 'userInput: ' + userInput
                    branch 'QA'
                 }
               steps {
-                 slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'jenkins_qa', message: 'Build and Testing completed and status is good , Deployment is pending for approval', teamDomain: '$WORKSPACE', tokenCredentialId: 'slackqa', username: 'Akash'
+                 slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'jenkins_qa', message: 'Your Deployment is successfully completed !!', teamDomain: '$WORKSPACE', tokenCredentialId: 'slackqa', username: 'Akash'
                  }
     }
     
