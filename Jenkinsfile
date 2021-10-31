@@ -17,7 +17,7 @@ stage('SCM Checkout') {
 
 stage('Build') {
 steps {
-         sh"/opt/maven/bin/mvn clean package -Dmaven.test.skip=true"
+         sh"/opt/maven/bin/mvn clean package "
 }
 }
 stage("build & SonarQube analysis") {
