@@ -95,7 +95,7 @@ echo 'userInput: ' + userInput
         } 
            stage ('Notify Dev again'){     
            steps {
-              slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'jenkins_dev', message: 'Your Deployment is completed', teamDomain: '$WORKSPACE', tokenCredentialId: 'slack', username: 'Akash'
+              slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'jenkins_dev', message: 'Your Deployment is completed :-)', teamDomain: '$WORKSPACE', tokenCredentialId: 'slack', username: 'Akash'
                  }
     }    
        stage ('Notify qa again'){ 
