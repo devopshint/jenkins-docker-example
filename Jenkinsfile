@@ -35,10 +35,7 @@ stage("build & SonarQube analysis") {
                    branch 'QA'
                 }
                 steps {
-                     sh '/opt/maven/bin/mvn cobertura:cobertura -Pmetrics -Dcobertura.report.format=xml'
-                     cobertura autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: '**/target/site/cobertura/coverage.xml', conditionalCoverageTargets: '70, 0, 0', enableNewApi: true, failNoReports: false, failUnhealthy: false, failUnstable: false, lineCoverageTargets: '80, 0, 0', maxNumberOfBuilds: 0, methodCoverageTargets: '80, 0, 0', onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false   
-                     sh '/opt/maven/bin/mvn verify'
-                     junit allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'
+                  sh 'echo Hello'
                 }
         }
        stage ('Notify Dev'){     
@@ -92,11 +89,7 @@ echo 'userInput: ' + userInput
                 }
             }
         } 
-                stage ('Notify Dev again'){     
-                   steps {
-                      slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'jenkins_dev', message: 'your deployment is completed !!', teamDomain: '$WORKSPACE', tokenCredentialId: 'slack', username: 'Akash'
-                 }
-    }
+           
        
     
     }
