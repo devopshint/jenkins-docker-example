@@ -113,11 +113,16 @@ echo 'userInput: ' + userInput
                  slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'jenkins_qa', message: 'Your Deployment is successfully completed !!', teamDomain: '$WORKSPACE', tokenCredentialId: 'slackqa', username: 'Akash'
                  }
     }
-       stage ('email notification'){     
+       stage ('email notification'){  
+              when {
+                   branch 'Dev'
+                }
            steps {
                          
                emailext body: '''Hello Dev Team 
-               Your deployment is successful !! "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}" ''', subject: 'Jenkins Job status', to: 'snarang601@gmail.com'
+               Your deployment is successful !! 
+               Regards
+               QA Team ''', subject: 'Jenkins Job status', to: 'snarang601@gmail.com'
 
            }
     }    
