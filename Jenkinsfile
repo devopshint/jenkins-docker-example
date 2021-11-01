@@ -134,9 +134,10 @@ echo 'userInput: ' + userInput
        }
       
     stage('Docker Run') {
-     steps{
+    steps{
          script {
                 sh 'docker run -d --name=myapp -p 9005:8888 akash64574/myapp-1.0:latest'
+         }
                 
             }
       }
