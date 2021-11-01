@@ -119,7 +119,7 @@ echo 'userInput: ' + userInput
                 }
            steps {
                          
-               emailext body: '''Hello Dev Team 
+               emailext body: '''Hi  Dev Team 
                Your deployment is successful !! 
                Regards
                QA Team ''', subject: 'Jenkins Job status', to: 'snarang601@gmail.com'
