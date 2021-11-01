@@ -125,7 +125,21 @@ echo 'userInput: ' + userInput
                QA Team ''', subject: 'Jenkins Job status', to: 'snarang601@gmail.com'
 
            }
-    }    
+    }   
+       stage('stop previous containers') {
+         steps {
+            sh 'docker ps -f name=myapp -q | xargs --no-run-if-empty docker container stop'
+            sh 'docker container ls -a -fname=myapp -q | xargs -r docker container rm'
+         }
+       }
+      
+    stage('Docker Run') {
+     steps{
+         script {
+                sh 'docker run -d --name=myapp -p 9005:8888 akash64574/myapp-1.0:latest'
+                
+            }
+      }
     
     }
 }
