@@ -28,7 +28,14 @@ stage("build & SonarQube analysis") {
               }
             }
           }
-      
+          //stage("Quality Gate") {
+            //steps {
+              //timeout(time: 1, unit: 'MINUTES') {
+                //waitForQualityGate abortPipeline: true
+              //}
+            //}
+        //}
+
 
         stage("testing") {
                 when {
@@ -106,6 +113,13 @@ echo 'userInput: ' + userInput
                  slackSend baseUrl: 'https://hooks.slack.com/services/', channel: 'jenkins_qa', message: 'Your Deployment is successfully completed !!', teamDomain: '$WORKSPACE', tokenCredentialId: 'slackqa', username: 'Akash'
                  }
     }
+       stage ('email notification'){     
+           steps {
+               emailext body: '''Hello Dev Team 
+               Your deployment is successful !!''', subject: 'Jenkins Job status', to: 'snarang601@gmail.com'
+
+           }
+    }    
     
     }
 }
