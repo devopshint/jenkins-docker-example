@@ -117,7 +117,7 @@ echo 'userInput: ' + userInput
            steps {
                          
                emailext body: '''Hello Dev Team 
-               Your deployment is successful !! ${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}''', subject: 'Jenkins Job status', to: 'snarang601@gmail.com'
+               Your deployment is successful !! "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}" ''', subject: 'Jenkins Job status', to: 'snarang601@gmail.com'
 
            }
     }    
